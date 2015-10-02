@@ -1,0 +1,94 @@
+//数据定义语言(DDL)
+	//创建表 Create table
+	//默认情况下为null
+	Create table table_name
+	( field1	data_type	[not null],
+	  field2	data_type   [not null],
+	  field3	data_type	[not null]
+	);
+
+	//添加自动增加的列
+	create table test_increment(
+	ID	serial,
+	test_name	varchar(20)
+	);
+
+
+	//从已有的表中创建新表
+	//MySQL和Oracle支持		Create table as Select
+	create table table_name as 
+	select [*|column1,column2]
+	from table_name
+	[where]
+
+	//SQL Sever支持 Select...into 
+	select [*|column1,column2] 
+	into new_table_name
+	from table_name
+	[where]
+
+
+	//修改表 Alter table
+	alter table table_name [modify] [column column_name] [data_type] [null|not null]
+	[restrict|cascade]
+	[drop] [constraint constraint_name]
+	[add] [column] column definition
+
+	//删除表 Drop Table
+	drop table table_name [restrict|cascade]
+
+//约束
+	//主键约束
+	primary key
+	//唯一性约束
+	unique
+	//外键---子表里的一个字段，引用父表里的主键
+	constraint emp_id_fk foreign key (emp_id) references employee_tbl (emp_id);
+
+	alter table table_name 
+	add constraint id_fk foreign key (emp_id)
+	references employee_tbl (emp_id);
+
+	//检查约束(CHK)
+	//在创建表的时候添加在最下面
+	constraint chk_emp_id check (emp_id = '12345');
+
+	//去除约束
+	alter table table_name drop primary key
+
+//数据操作语言(DML)
+	//把数据插入表中 Insert into
+	INSERT INTO table_name
+	values ('value1','value2',[null]);
+	
+	//给表中的指定列插入数据
+	INSERT INTO table_name ('column1','column2')
+	values ('value1','value2');
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
